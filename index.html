@@ -77,9 +77,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .l1{color:var(--cream);font-size:.78em}
 .l2{color:var(--orange);text-shadow:0 0 38px rgba(242,106,33,.35);--d0:240ms}
 [dir=rtl] .hero h1{font:700 clamp(50px,12vw,128px)/1.05 var(--text);letter-spacing:0}
-.food{position:absolute;top:0;bottom:0;left:50%;width:min(100%,980px);transform:translate3d(-50%,var(--fy,0px),0);z-index:2;pointer-events:none}
-.beef{position:absolute;width:62%;left:3%;bottom:2%;filter:drop-shadow(0 22px 22px rgba(0,0,0,.6))}
-.bogota{position:absolute;width:44%;right:2%;bottom:-1%;filter:drop-shadow(0 22px 24px rgba(0,0,0,.65))}
+.food{position:absolute;top:0;bottom:0;left:50%;width:min(100%,980px);transform:translate3d(-50%,var(--fy,0px),0);z-index:2;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;gap:var(--fg,2%);padding:0 3% var(--fb,3%)}
+.beef{flex:none;width:var(--bw,52%);filter:drop-shadow(0 22px 22px rgba(0,0,0,.6))}
+.sao{flex:none;width:var(--sw,40%);filter:drop-shadow(0 22px 24px rgba(0,0,0,.65))}
 .lattice{position:absolute;right:-4%;bottom:-6%;width:44%;height:38%;z-index:1;opacity:.75;transform:rotate(-8deg);clip-path:polygon(9% 30%,30% 12%,58% 18%,82% 2%,100% 8%,100% 100%,0 100%);background:repeating-linear-gradient(45deg,transparent 0 13px,rgba(236,218,194,.55) 13px 15px),repeating-linear-gradient(-45deg,transparent 0 13px,rgba(236,218,194,.55) 13px 15px)}
 .sparks,.smoke{position:absolute;inset:0;z-index:1;pointer-events:none}
 .sparks i{position:absolute;bottom:18%;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:var(--ember);box-shadow:0 0 8px 2px rgba(255,138,61,.7);opacity:0;animation:rise var(--d) linear var(--w) infinite}
@@ -90,12 +90,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 @keyframes heat{to{text-shadow:0 0 70px rgba(242,106,33,.6),0 0 18px rgba(255,160,90,.35)}}
 /* hero load sequence */
 .js .hero h1 .c{opacity:0;transform:translateY(55%) rotate(5deg);filter:blur(8px)}
-.js .beef,.js .bogota{opacity:0;transform:translateY(60px) scale(.94)}
+.js .beef,.js .sao{opacity:0;transform:translateY(60px) scale(.94)}
 .js .lattice{opacity:0;transform:rotate(-8deg) translateY(40px)}
 .ready .hero h1 .c{opacity:1;transform:none;filter:none;transition:transform .9s cubic-bezier(.2,.9,.25,1.12),opacity .5s ease,filter .7s ease;transition-delay:calc(var(--i)*38ms + var(--d0,0ms))}
 .ready .l2{animation:heat 2.8s ease-in-out 1.8s infinite alternate}
-.ready .beef,.ready .bogota{opacity:1;transform:none;transition:opacity .8s ease .55s,transform 1.2s cubic-bezier(.2,.9,.25,1.06) .55s}
-.ready .bogota{transition-delay:.72s}
+.ready .beef,.ready .sao{opacity:1;transform:none;transition:opacity .8s ease .55s,transform 1.2s cubic-bezier(.2,.9,.25,1.06) .55s}
+.ready .sao{transition-delay:.72s}
 .ready .lattice{opacity:.75;transform:rotate(-8deg);transition:opacity 1.2s ease .9s,transform 1.4s var(--ease) .9s}
 
 /* category bar */
@@ -175,6 +175,25 @@ main.swap{animation:swap .45s ease}
 .reveal.seen .copy>:nth-child(2){transition-delay:.09s}
 .reveal.seen .copy>:nth-child(3){transition-delay:.18s}
 @media (hover:hover){.item.seen:hover .ph img{transform:scale(1.07)}}
+
+/* fries options + burger add-ons */
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.opts span{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:6px 14px;border-radius:999px;border:1px solid rgba(242,106,33,.45);color:var(--cream);font:600 15px/1 var(--text)}
+.opts span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.adds{margin-top:16px;padding-top:12px;border-top:1px dashed rgba(244,232,216,.14);max-width:520px}
+.adds-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.adds-l{font:700 15px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;color:var(--soft)}
+[dir=rtl] .adds-l{font:600 14px/1 var(--text);letter-spacing:0}
+.adds-row{display:flex;flex-wrap:wrap;gap:8px 18px}
+.add{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:#d6c9b7;white-space:nowrap}
+.add img{width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))}
+.adds-p{font:700 18px/1 var(--display);color:var(--cream);white-space:nowrap}
+.adds-p .cur{font-size:.7em}
+.adds-p small{font:400 13px/1 var(--text);color:var(--soft)}
+.sheet .adds{margin-top:18px}
+.stag .sp{display:block;margin-top:4px;font:700 .82em/1 var(--display);color:#9a3c10}
+.stag .sp .cur{color:#9a3c10;font-size:.8em}
+[dir=rtl] .stag .sp{font:600 .9em/1 var(--text)}
 
 /* sauces */
 .sub{margin:clamp(30px,4vw,44px) 0 4px;font:800 clamp(28px,3.8vw,38px)/1 var(--display);text-transform:uppercase;color:var(--cream)}
@@ -268,15 +287,15 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
   .sheet .big{min-height:0;aspect-ratio:4/3}
   dialog{width:100vw;max-width:100vw;max-height:94vh;margin:auto 0 0;border-radius:22px 22px 0 0}
   @keyframes pop{from{transform:translateY(60%)}}
-  .beef{width:70%;left:1%;bottom:5%}
-  .bogota{width:58%;right:-6%;bottom:16%}
+  .food{--bw:54%;--sw:42%;--fg:1%;--fb:6%;padding-inline:2%}
+  .hero{height:clamp(300px,82vw,340px)}
   .lattice{width:60%;height:30%}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .js .splash{display:none}
-  .js .hero h1 .c,.js .beef,.js .bogota,.js .reveal .ph img,.js .reveal .copy>*,.js .op .ttl,.js .op .tag,.js .end .sign span,.js .saucebar .plank,.js .saucebar .cimg,.js .saucebar .stag{transform:none;opacity:1;filter:none;clip-path:none}
+  .js .hero h1 .c,.js .beef,.js .sao,.js .reveal .ph img,.js .reveal .copy>*,.js .op .ttl,.js .op .tag,.js .end .sign span,.js .saucebar .plank,.js .saucebar .cimg,.js .saucebar .stag{transform:none;opacity:1;filter:none;clip-path:none}
   .cimg::before{opacity:1}
   .js .lattice{opacity:.75;transform:rotate(-8deg)}
   .sear i{transform:skewX(-35deg) scaleX(1);background:#7a3414}
@@ -300,8 +319,8 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
   <div class="sparks" id="sparks" aria-hidden="true"></div>
   <div class="lattice" aria-hidden="true"></div>
   <div class="food" aria-hidden="true">
-    <img class="bogota" src="assets/hero/hero-bogota.webp" width="1066" height="810" alt="">
     <img class="beef" src="assets/hero/hero-smokey-beef.webp" width="1080" height="386" alt="">
+    <img class="sao" src="assets/hero/hero-sao-paulo.webp" width="900" height="655" alt="">
   </div>
 </section>
 
@@ -314,7 +333,6 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
 
 <footer class="end" id="end">
   <p class="sign" aria-label="From fire to fire"><span>From fire</span><span>to fire</span></p>
-  <p class="ready" data-t="ready">Ready to order? Just tell your waiter what you'd like.</p>
   <p data-t="aed">All prices are in UAE dirhams (AED).</p>
   <img src="assets/lockup.svg" width="164" height="34" alt="Burger Hunch × MOLT" loading="lazy">
 </footer>
@@ -329,38 +347,37 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
 const T={
   skip:["Skip to menu","تخطي إلى المنيو"],h1:["Grilled to","مشوي على"],h2:["Perfection.","أصوله."],
   cats:["Menu categories","أقسام المنيو"],single:["Single","سنجل"],double:["Double","دبل"],
-  ready:["Ready to order? Just tell your waiter what you'd like.","جاهز للطلب؟ أخبر النادل باختيارك."],
   aed:["All prices are in UAE dirhams (AED).","جميع الأسعار بالدرهم الإماراتي."],
-  note:["Tell your waiter when you're ready, and we'll fire it up.","أخبر النادل عندما تكون جاهزًا، ونبدأ الشوي فورًا."],
-  view:["View","عرض"],close:["Close","إغلاق"],sauces:["Sauces","الصوصات"],sbTag:["Pick one, or a few.","اختر واحدًا، أو أكثر."],each:["each","للواحد"],grpH:["Burger Hunch","برجر هنش"],grpM:["MOLT","مولت"],langBtn:["Switch to Arabic","التبديل إلى الإنجليزية"],
+  addons:["Add-ons","إضافات"],each:["each","للواحد"],plain:["Plain","سادة"],seasoned:["Seasoned","بالتوابل"],
+  view:["View","عرض"],close:["Close","إغلاق"],sauces:["Sauces","الصوصات"],sbTag:["Add your own touch to your sandwich.","أضف لمستك الخاصة على ساندوتشك."],langBtn:["Switch to Arabic","التبديل إلى الإنجليزية"],
   cur:["AED","درهم"]
 };
 const CATS=[
  {id:"burgers",n:["Burgers","برجر"],t:["Black Angus beef and chicken, grilled over a real wood fire.","لحم بلاك أنجوس ودجاج، مشويّان على نار الحطب."]},
- {id:"sandwiches",n:["Sandwiches","ساندوتشات"],t:["MOLT's fresh rolls, stacked with grilled Angus tenderloin or chicken breast.","خبز مولت الطازج، محشو بتندرلوين أنجوس أو صدر دجاج مشوي."]},
+ {id:"sandwiches",n:["Sandwiches","ساندوتشات"],t:["Fresh rolls, stacked with grilled Angus tenderloin or chicken breast.","خبز رول طازج، محشو بتندرلوين أنجوس أو صدر دجاج مشوي."]},
  {id:"appetizers",n:["Appetizers","مقبلات"],t:["Fries, bites and sides for the table, with six sauces to dip into.","بطاطس وبايتس وأطباق جانبية للطاولة، مع ست صوصات للتغميس."]},
  {id:"drinks",n:["Drinks","مشروبات"],t:["Something cold to go with the fire.","شيء بارد يرافق نار الحطب."]}
 ];
-const dbl=[" Go double for two slices."," اطلبه دبل بشريحتين."];
+const ADDONS=[{img:"caramelised-onion",n:["Caramelised onion","بصل مكرمل"]},{img:"jalapeno",n:["Jalapeño","هالبينو"]},{img:"extra-cheese",n:["Extra cheese","جبن إضافي"]}],ADDON_PRICE=3;
 const ITEMS=[
- {c:"burgers",img:"smokey-beef",sizes:[39,49],n:["Smokey Burger Beef","برجر سموكي لحم"],d:["Black Angus beef grilled over a wood fire, finished with melted American cheese and our smoky sauce."+dbl[0],"لحم بلاك أنجوس مشوي على نار الحطب، مع جبن أمريكي ذائب وصوص سموكي."+dbl[1]]},
- {c:"burgers",img:"smokey-chicken",sizes:[39,49],n:["Smokey Burger Chicken","برجر سموكي دجاج"],d:["Chicken grilled over a wood fire, finished with melted American cheese and our smoky sauce."+dbl[0],"دجاج مشوي على نار الحطب، مع جبن أمريكي ذائب وصوص سموكي."+dbl[1]]},
- {c:"burgers",img:"flat-beef",p:39,n:["Flat Tasty Burger Beef","فلات تيستي برجر لحم"],d:["A thin slice of Black Angus with Texas special sauce and American cheese, toasted flat over the wood fire.","شريحة بلاك أنجوس رقيقة مع صوص تكساس الخاص والجبن الأمريكي، محمّصة على نار الحطب."]},
- {c:"burgers",img:"flat-chicken",p:39,n:["Flat Tasty Burger Chicken","فلات تيستي برجر دجاج"],d:["Our Flat Tasty Burger, made with chicken.","فلات تيستي برجر، بالدجاج."]},
- {c:"sandwiches",img:"bogota",p:49,n:["Bogota","بوغوتا"],d:["Grilled Angus tenderloin with caramelised onion, white and yellow cheddar, lettuce, MOLT sauce and jalapeños, in a fresh roll.","شرائح تندرلوين أنجوس مشوية مع بصل مكرمل، وجبن شيدر أبيض وأصفر، وخس، وصوص مولت، وهالبينو، في خبز رول طازج."]},
- {c:"sandwiches",img:"sao-paulo",p:39,n:["Sao Paulo","ساو باولو"],d:["Grilled chicken breast strips in our MOLT marinade, with lettuce, white cheddar, crispy onion, ranch, honey mustard and chipotle, in a fresh roll.","شرائح صدر دجاج مشوية بتتبيلة مولت، مع خس وجبن شيدر أبيض وبصل مقرمش وصوص رانش وعسل وخردل وشيبوتلي، في خبز رول طازج."]},
- {c:"appetizers",img:"fries",p:15,n:["French Fries","بطاطس"],d:["Golden and crispy.","ذهبية ومقرمشة."]},
- {c:"appetizers",img:"cheese-fries",p:25,n:["Hunch Cheese Fries","هنش تشيز فرايز"],d:["Fries loaded with American cheddar, Hunch sauce and sliced jalapeños.","بطاطس مغطاة بجبن شيدر أمريكي وصوص هنش وشرائح هالبينو."]},
- {c:"appetizers",img:"hunch-bites",p:25,n:["Hunch Bites","هنش بايتس"],d:["Five pieces of fried chicken breast, served with Hunch sauce.","خمس قطع من صدر الدجاج المقلي، تُقدَّم مع صوص هنش."]},
+ {c:"burgers",img:"smokey-beef",sizes:[39,49],n:["Smokey Burger Beef","برجر سموكي لحم"],add:1,d:["Black Angus beef grilled over a wood fire, finished with melted American cheese and our smoky sauce.","لحم بلاك أنجوس مشوي على نار الحطب، مع جبن أمريكي ذائب وصوص سموكي."]},
+ {c:"burgers",img:"smokey-chicken",sizes:[39,49],n:["Smokey Burger Chicken","برجر سموكي دجاج"],add:1,d:["Chicken grilled over a wood fire, finished with melted American cheese and our smoky sauce.","دجاج مشوي على نار الحطب، مع جبن أمريكي ذائب وصوص سموكي."]},
+ {c:"burgers",img:"flat-beef",p:39,add:1,n:["Flat Tasty Burger Beef","فلات تيستي برجر لحم"],d:["A thin slice of Black Angus with Texas special sauce and American cheese, toasted flat over the wood fire.","شريحة بلاك أنجوس رقيقة مع صوص تكساس الخاص والجبن الأمريكي، محمّصة على نار الحطب."]},
+ {c:"burgers",img:"flat-chicken",p:39,add:1,n:["Flat Tasty Burger Chicken","فلات تيستي برجر دجاج"],d:["Our Flat Tasty Burger, made with chicken.","فلات تيستي برجر، بالدجاج."]},
+ {c:"sandwiches",img:"bogota",p:49,n:["Bogota","بوغوتا"],d:["Grilled Angus tenderloin with caramelised onion, white and yellow cheddar, lettuce, signature sauce and jalapeños, in a fresh roll.","شرائح تندرلوين أنجوس مشوية مع بصل مكرمل، وجبن شيدر أبيض وأصفر، وخس، وسيغنتشر صوص، وهالبينو، في خبز رول طازج."]},
+ {c:"sandwiches",img:"sao-paulo",p:39,n:["Sao Paulo","ساو باولو"],d:["Grilled chicken breast strips in our special marinade, with lettuce, white cheddar, crispy onion, ranch, honey mustard and chipotle, in a fresh roll.","شرائح صدر دجاج مشوية بتتبيلتنا الخاصة، مع خس وجبن شيدر أبيض وبصل مقرمش وصوص رانش وعسل وخردل وشيبوتلي، في خبز رول طازج."]},
+ {c:"appetizers",img:"fries",p:15,opts:["plain","seasoned"],n:["French Fries","بطاطس"],d:["Golden and crispy, plain or seasoned with our spices.","ذهبية ومقرمشة، سادة أو بالتوابل."]},
+ {c:"appetizers",img:"cheese-fries",p:25,n:["Cheese Fries","تشيز فرايز"],d:["Fries loaded with American cheddar, house sauce and sliced jalapeños.","بطاطس مغطاة بجبن شيدر أمريكي وهاوس صوص وشرائح هالبينو."]},
+ {c:"appetizers",img:"hunch-bites",p:25,n:["Chicken Bites","تشيكن بايتس"],d:["Five pieces of fried chicken breast, served with house sauce.","خمس قطع من صدر الدجاج المقلي، تُقدَّم مع هاوس صوص."]},
  {c:"appetizers",img:"cheese-nachos",p:15,n:["Cheese Nachos","ناتشوز بالجبنة"],d:["Two fried nachos filled with American cheese and jalapeños.","قطعتان من الناتشوز المقلي محشوتان بالجبن الأمريكي والهالبينو."]},
- {c:"appetizers",img:"corn-salad",p:20,n:["MOLT Corn Salad","سلطة مولت بالذرة"],d:["Grilled corn, feta, fresh coriander, tomatoes, green peppers and spring onions, with lemon mayonnaise.","ذرة مشوية مع جبنة الفيتا، والكزبرة الطازجة، والطماطم، والفلفل الأخضر، والبصل الأخضر، مع صوص المايونيز بالليمون."]},
- {c:"appetizers",s:1,g:"h",sn:["Hunch","هنش"],img:"hunch-sauce",p:6,n:["Hunch Sauce","صوص هنش"],d:["One of three Burger Hunch sauces.","واحد من ثلاث صوصات برجر هنش."]},
- {c:"appetizers",s:1,g:"h",sn:["Smokey","سموكي"],img:"smokey-sauce",p:6,n:["Smokey Sauce","صوص سموكي"],d:["One of three Burger Hunch sauces.","واحد من ثلاث صوصات برجر هنش."]},
- {c:"appetizers",s:1,g:"h",sn:["Algerian","الجيريا"],img:"algerian-sauce",p:6,n:["Algerian Sauce","صوص الجيريا"],d:["One of three Burger Hunch sauces.","واحد من ثلاث صوصات برجر هنش."]},
- {c:"appetizers",s:1,g:"m",sn:["MOLT","مولت"],img:"molt-sauce",p:5,n:["MOLT Sauce","صوص مولت"],d:["One of three MOLT sauces.","واحد من ثلاث صوصات مولت."]},
- {c:"appetizers",s:1,g:"m",sn:["Special","خاص"],img:"special-sauce",p:5,n:["Special Sauce","صوص خاص"],d:["One of three MOLT sauces.","واحد من ثلاث صوصات مولت."]},
- {c:"appetizers",s:1,g:"m",sn:["Honey Mustard","عسل وخردل"],img:"honey-mustard",p:5,n:["Honey Mustard","صوص العسل والخردل"],d:["One of three MOLT sauces.","واحد من ثلاث صوصات مولت."]},
- {c:"drinks",img:"soft-drinks",p:8,n:["Soft Drinks","مشروبات غازية"]},
+ {c:"appetizers",img:"corn-salad",p:20,n:["Corn Salad","سلطة الذرة"],d:["Grilled corn, feta, fresh coriander, tomatoes, green peppers and spring onions, with lemon mayonnaise.","ذرة مشوية مع جبنة الفيتا، والكزبرة الطازجة، والطماطم، والفلفل الأخضر، والبصل الأخضر، مع صوص المايونيز بالليمون."]},
+ {c:"appetizers",s:1,g:"h",sn:["House","هاوس"],img:"hunch-sauce",p:6,n:["House Sauce","هاوس صوص"]},
+ {c:"appetizers",s:1,g:"h",sn:["Smokey","سموكي"],img:"smokey-sauce",p:6,n:["Smokey Sauce","صوص سموكي"]},
+ {c:"appetizers",s:1,g:"h",sn:["Algerian","الجيريا"],img:"algerian-sauce",p:6,n:["Algerian Sauce","صوص الجيريا"]},
+ {c:"appetizers",s:1,g:"m",sn:["Signature","سيغنتشر"],img:"molt-sauce",p:5,n:["Signature Sauce","سيغنتشر صوص"]},
+ {c:"appetizers",s:1,g:"m",sn:["Special","خاص"],img:"special-sauce",p:5,n:["Special Sauce","صوص خاص"]},
+ {c:"appetizers",s:1,g:"m",sn:["Honey Mustard","عسل وخردل"],img:"honey-mustard",p:5,n:["Honey Mustard","صوص العسل والخردل"]},
+ {c:"drinks",img:"soft-drinks",p:8,n:["Soft Drinks","مشروبات غازية"],d:["Pepsi, Diet Pepsi, 7UP, 7UP Free or Mirinda Orange.","بيبسي، بيبسي دايت، سفن أب، سفن أب فري أو ميرندا برتقال."]},
  {c:"drinks",img:"water",p:8,n:["Water","مياه"]},
  {c:"drinks",img:"sparkling-water",p:11,n:["Sparkling Water","مياه غازية"]}
 ];
@@ -377,14 +394,15 @@ const pricesHTML=(it,solo)=>it.sizes
   ?`<div class="prices">${it.sizes.map((v,i)=>`<span class="price"><span class="lb">${T[i?"double":"single"][L]}</span>${money(v)}</span>`).join("")}</div>`
   :`<div class="prices"><span class="price${solo?" solo":""}">${money(it.p)}</span></div>`;
 const pic=(it,lazy)=>`<div class="ph"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}"${lazy?' loading="lazy" decoding="async"':""}></div>`;
-const row=(it,i,k)=>`<article class="item reveal${k%2?" flip":""}" data-i="${i}">${pic(it,i>1)}<div class="copy"><h3 class="name">${esc(it.n[L])}</h3>${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,true)}</div><button class="hit" type="button" data-open="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}"></button></article>`;
+const optsHTML=it=>it.opts?`<div class="opts">${it.opts.map(o=>`<span>${T[o][L]}</span>`).join("")}</div>`:"";
+const addsHTML=it=>it.add?`<div class="adds"><div class="adds-h"><span class="adds-l">${T.addons[L]}</span><span class="adds-p">+${money(ADDON_PRICE)} <small>${T.each[L]}</small></span></div><div class="adds-row">${ADDONS.map(a=>`<span class="add"><img src="assets/addons/${a.img}.webp" width="160" height="160" alt="" loading="lazy">${esc(a.n[L])}</span>`).join("")}</div></div>`:"";
+const row=(it,i,k)=>`<article class="item reveal${k%2?" flip":""}" data-i="${i}">${pic(it,i>1)}<div class="copy"><h3 class="name">${esc(it.n[L])}</h3>${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,true)}${optsHTML(it)}${addsHTML(it)}</div><button class="hit" type="button" data-open="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}"></button></article>`;
 const saucebar=list=>{
-  const grp=(g,label)=>{const xs=list.filter(([it])=>it.g===g),p=xs[0][0].p;
-    return `<div class="grp"><div class="grp-h"><b>${label}</b><span>${money(p)}<small>${T.each[L]}</small></span></div>
-    <div class="cups">${xs.map(([it,i],k)=>`<button class="cimg" type="button" style="--k:${k}" data-open="${i}" data-cup="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}, ${p} ${T.cur[L]}"><img src="assets/sauces/${it.img}.webp" width="420" height="370" alt="" loading="lazy" decoding="async"></button>`).join("")}</div>
+  const shelf=(xs,off)=>`<div class="grp">
+    <div class="cups">${xs.map(([it,i],k)=>`<button class="cimg" type="button" style="--k:${k+off}" data-open="${i}" data-cup="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}, ${it.p} ${T.cur[L]}"><img src="assets/sauces/${it.img}.webp" width="420" height="370" alt="" loading="lazy" decoding="async"></button>`).join("")}</div>
     <div class="plank" aria-hidden="true"></div>
-    <div class="tags">${xs.map(([it,i],k)=>`<button class="stag" type="button" style="--k:${k};--tilt:${[-2.5,1.5,-1][k]}deg" data-open="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}">${esc(it.sn[L])}</button>`).join("")}</div></div>`};
-  return `<div class="saucebar"><h3 class="sub">${T.sauces[L]}</h3><p class="sb-tag">${T.sbTag[L]}</p><div class="shelves">${grp("h",T.grpH[L])}${grp("m",T.grpM[L])}</div></div>`;
+    <div class="tags">${xs.map(([it,i],k)=>`<button class="stag" type="button" style="--k:${k+off};--tilt:${[-2.5,1.5,-1][k]}deg" data-open="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}">${esc(it.sn[L])}<span class="sp">${money(it.p)}</span></button>`).join("")}</div></div>`;
+  return `<div class="saucebar"><h3 class="sub">${T.sauces[L]}</h3><p class="sb-tag">${T.sbTag[L]}</p><div class="shelves">${shelf(list.slice(0,3),0)}${shelf(list.slice(3),3)}</div></div>`;
 };
 const opener=c=>`<header class="op"><div class="ghost" aria-hidden="true"><span>${esc(c.n[L])}&nbsp;&nbsp;${esc(c.n[L])}&nbsp;&nbsp;${esc(c.n[L])}</span></div><h2 class="ttl" id="h-${c.id}">${esc(c.n[L])}</h2><p class="tag">${esc(c.t[L])}</p><div class="sear" aria-hidden="true">${[0,1,2,3].map(n=>`<i style="--n:${n}"></i>`).join("")}</div></header>`;
 const tape=(c,k)=>{const one=`<span>${esc(c.n[L])}${FLAME}</span>`.repeat(6);return `<div class="tapewrap" aria-hidden="true"><div class="tape" style="--r:${k%2?2:-2}deg" data-dir="${k%2?1:-1}"><div class="track">${one}${one}</div></div></div>`};
@@ -477,7 +495,7 @@ document.fonts&&document.fonts.ready.then(()=>{measure();first=true});
 const dlg=$("#sheet");
 function openItem(i,src){
   const it=ITEMS[i];
-  $("#sheet-in").innerHTML=`<div class="big"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}"></div><div class="body"><h3 class="name" id="sheet-name">${esc(it.n[L])}</h3>${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,false)}<p class="note">${T.note[L]}</p></div>`;
+  $("#sheet-in").innerHTML=`<div class="big"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}"></div><div class="body"><h3 class="name" id="sheet-name">${esc(it.n[L])}</h3>${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,false)}${optsHTML(it)}${addsHTML(it)}</div>`;
   const fly=!RM&&src&&dlg.showModal&&dlg.animate;
   dlg.classList.toggle("flip",!!fly);
   if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");

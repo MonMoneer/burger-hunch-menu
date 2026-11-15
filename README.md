@@ -5,6 +5,8 @@ Browsing-only menu for guests at the table, on a tablet or by QR. The waiter tak
 - Open `index.html` from a web host. Keep the `assets` folder next to it.
 - Four categories: Burgers, Sandwiches, Appetizers (with sauces) and Drinks. Items and prices match Foodbit (app1.foodbit.io/en/burgerhunchxmolt) as checked on 15 Nov 2026.
 - English and Arabic (RTL) are both included. The menu opens in Arabic on Arabic-language devices and remembers the guest's choice.
+- One unified menu: no Burger Hunch or MOLT labels on dishes or sauces.
+- Burgers show their add-ons (caramelised onion, jalapeño, extra cheese) at AED 3 each. French fries can be plain or seasoned.
 - Tapping a dish flies its photo into a detail sheet with the description and price.
 - Motion:
   - The menu opens with a short logo curtain. Tap it to skip.
@@ -18,4 +20,5 @@ Browsing-only menu for guests at the table, on a tablet or by QR. The waiter tak
 ## Photos
 - MOLT sandwiches use the 3 Nov stamp-free revision (`outputs/black-menu-20261028/revision-20261103`).
 - Burger Hunch items use the Burger Hunch 23-photo set.
-- Higgsfield (GPT Image 2.6) generated three photos in the same slate style: Flat Tasty Burger Chicken (edited from the beef photo), Water and Sparkling Water. The originals are in `higgsfield/`. Replace them with real photos when available.
+- Higgsfield (GPT Image 2.6) generated photos in the same slate style: Flat Tasty Burger Chicken (edited from the beef photo), Water, Sparkling Water, the soft-drink bottle line-up and the three add-on icons. The originals are in `higgsfield/`. Replace them with real photos when available.
+- The hero uses a background-removed cut-out of the stamp-free Sao Paulo next to the Smokey Burger halves. The sauce cups are background-removed cut-outs of the menu photos.
