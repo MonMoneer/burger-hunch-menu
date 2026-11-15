@@ -189,18 +189,21 @@ main.swap{animation:swap .45s ease}
 .reveal.seen .best{opacity:1;scale:1;transition:opacity .4s ease .55s,scale .6s cubic-bezier(.3,1.6,.5,1) .55s}
 .saucebar.seen .best{opacity:1;scale:1;transition:opacity .4s ease,scale .6s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--k)*140ms + 1.2s)}
 
-.best.new{background:var(--cream);color:var(--ink);box-shadow:0 8px 18px rgba(0,0,0,.45),0 0 0 3px rgba(244,232,216,.16)}
-.best.new svg{width:13px;height:13px;fill:var(--orange);transform-origin:50% 50%;animation:twinkle 1.8s ease-in-out infinite}
+.best.new{color:#fff}
+.best.new svg{width:13px;height:13px;fill:#fff;transform-origin:50% 50%;animation:twinkle 1.8s ease-in-out infinite}
 @keyframes twinkle{0%,100%{transform:scale(.8) rotate(0)}50%{transform:scale(1.15) rotate(45deg)}}
 .sheet .best.new svg{width:15px;height:15px}
 .bdgs{position:absolute;top:12px;inset-inline-start:12px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;pointer-events:none}
 .bdgs .best{position:static}
 .sheet .bdgs{top:16px;inset-inline-start:16px}
-.best.jos{background:rgba(22,17,13,.78);color:var(--cream);border:1px solid rgba(244,232,216,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 8px 18px rgba(0,0,0,.45)}
-.best.jos{padding:6px 13px}
-.best.jos img{display:block;height:14px;width:auto;translate:0 1px}
-.sheet .best.jos img{height:16px}
-.reveal.seen .bdgs .best:nth-child(2){transition-delay:.75s}
+.bdgs{align-items:center;gap:10px}
+.seal{display:block;width:auto;height:54px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.55))}
+.sheet .seal{height:72px}
+.js .reveal .seal{opacity:0;scale:.5;rotate:-12deg}
+.reveal.seen .seal{opacity:1;scale:1;rotate:0deg;transition:opacity .4s ease .8s,scale .7s cubic-bezier(.3,1.6,.5,1) .8s,rotate .7s cubic-bezier(.3,1.6,.5,1) .8s}
+.josper{display:inline-flex;align-items:center;align-self:flex-start;justify-self:start;width:fit-content;max-width:100%;gap:9px;margin-top:12px;padding:7px 14px;border-radius:999px;background:rgba(242,106,33,.12);border:1px solid rgba(242,106,33,.4);color:var(--cream);font:600 15px/1 var(--text);white-space:nowrap}
+.josper img{display:block;height:15px;width:auto;translate:0 1px}
+.name+.josper+.desc{margin-top:12px}
 /* fries options + burger add-ons */
 .opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .opts span{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:6px 14px;border-radius:999px;border:1px solid rgba(242,106,33,.45);color:var(--cream);font:600 15px/1 var(--text)}
@@ -320,7 +323,7 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .js .splash{display:none}
-  .js .hero h1 .c,.js .beef,.js .sao,.js .reveal .ph>img,.js .reveal .copy>*,.js .op .ttl,.js .op .tag,.js .end .sign span,.js .saucebar .plank,.js .saucebar .cimg,.js .saucebar .stag,.js .reveal .best,.js .saucebar .best{transform:none;opacity:1;filter:none;clip-path:none;scale:1}
+  .js .hero h1 .c,.js .beef,.js .sao,.js .reveal .ph>img,.js .reveal .copy>*,.js .op .ttl,.js .op .tag,.js .end .sign span,.js .saucebar .plank,.js .saucebar .cimg,.js .saucebar .stag,.js .reveal .best,.js .saucebar .best,.js .reveal .seal{rotate:0deg;transform:none;opacity:1;filter:none;clip-path:none;scale:1}
   .cimg::before{opacity:1}
   .js .lattice{opacity:.75;transform:rotate(-8deg)}
   .sear i{transform:skewX(-35deg) scaleX(1);background:#7a3414}
@@ -375,7 +378,7 @@ const T={
   aed:["All prices are in UAE dirhams (AED).","جميع الأسعار بالدرهم الإماراتي."],
   addons:["Add-ons","إضافات"],each:["each","للواحد"],plain:["Plain","سادة"],seasoned:["Seasoned","بالتوابل"],
   view:["View","عرض"],close:["Close","إغلاق"],sauces:["Sauces","الصوصات"],sbTag:["Add your own touch to your sandwich.","أضف لمستك الخاصة على ساندوتشك."],langBtn:["Switch to Arabic","التبديل إلى الإنجليزية"],
-  cur:["AED","درهم"],best:["Best seller","الأكثر طلبًا"],nw:["New","جديد"]
+  cur:["AED","درهم"],best:["Best seller","الأكثر طلبًا"],nw:["New","جديد"],cookedIn:["Cooked in","مطهو في"]
 };
 const CATS=[
  {id:"burgers",n:["Burgers","برجر"],t:["Black Angus beef and chicken, grilled over a real wood fire.","لحم بلاك أنجوس ودجاج، مشويّان على نار الحطب."]},
@@ -416,6 +419,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const FLAME='<svg viewBox="0 0 20 26" aria-hidden="true"><path d="M10 0c1 5 7 8 7 15a7 7 0 0 1-14 0c0-3 1.5-5 3.5-6.5C6 11 7 13 9 13c0-4-1-8 1-13z"/></svg>';
 
 const SPARK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>';
+const josperHTML=it=>it.josper?`<span class="josper"><span>${T.cookedIn[L]}</span><img src="assets/brand/josper-white.png" width="500" height="84" alt="Josper"></span>`:"";
 const money=v=>L?`${v} <span class="cur">${T.cur[1]}</span>`:`<span class="cur">${T.cur[0]}</span> ${v}`;
 const pricesHTML=(it,solo)=>it.sizes
   ?`<div class="prices">${it.sizes.map((v,i)=>`<span class="price"><span class="lb">${T[i?"double":"single"][L]}</span>${money(v)}</span>`).join("")}</div>`
@@ -424,13 +428,13 @@ const badge=it=>{
   const b=[];
   if(it.best)b.push(`<span class="best">${FLAME}${T.best[L]}</span>`);
   if(it.nw)b.push(`<span class="best new">${SPARK}${T.nw[L]}</span>`);
-  if(it.josper)b.push(`<span class="best jos"><img src="assets/brand/josper-white.png" width="500" height="84" alt="Josper"></span>`);
+  if(it.josper)b.push(`<img class="seal" src="assets/brand/josper-shield.webp" width="181" height="223" alt="Josper since 1969">`);
   return b.length>1?`<span class="bdgs">${b.join("")}</span>`:b.join("");
 };
 const pic=(it,lazy)=>`<div class="ph"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}"${lazy?' loading="lazy" decoding="async"':""}>${badge(it)}</div>`;
 const optsHTML=it=>it.opts?`<div class="opts">${it.opts.map(o=>`<span>${T[o][L]}</span>`).join("")}</div>`:"";
 const addsHTML=it=>it.add?`<div class="adds"><div class="adds-h"><span class="adds-l">${T.addons[L]}</span><span class="adds-p">+${money(ADDON_PRICE)} <small>${T.each[L]}</small></span></div><div class="adds-row">${ADDONS.map(a=>`<span class="add"><img src="assets/addons/${a.img}.webp" width="160" height="160" alt="" loading="lazy">${esc(a.n[L])}</span>`).join("")}</div></div>`:"";
-const row=(it,i,k)=>`<article class="item reveal${k%2?" flip":""}" data-i="${i}">${pic(it,i>1)}<div class="copy"><h3 class="name">${esc(it.n[L])}</h3>${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,true)}${optsHTML(it)}${addsHTML(it)}</div><button class="hit" type="button" data-open="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}"></button></article>`;
+const row=(it,i,k)=>`<article class="item reveal${k%2?" flip":""}" data-i="${i}">${pic(it,i>1)}<div class="copy"><h3 class="name">${esc(it.n[L])}</h3>${josperHTML(it)}${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,true)}${optsHTML(it)}${addsHTML(it)}</div><button class="hit" type="button" data-open="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}"></button></article>`;
 const saucebar=list=>{
   const shelf=(xs,off)=>`<div class="grp">
     <div class="cups">${xs.map(([it,i],k)=>`<button class="cimg" type="button" style="--k:${k+off}" data-open="${i}" data-cup="${i}" aria-label="${T.view[L]}: ${esc(it.n[L])}, ${it.p} ${T.cur[L]}${it.best?", "+T.best[L]:""}"><img src="assets/sauces/${it.img}.webp" width="420" height="370" alt="" loading="lazy" decoding="async">${badge(it)}</button>`).join("")}</div>
@@ -529,7 +533,7 @@ document.fonts&&document.fonts.ready.then(()=>{measure();first=true});
 const dlg=$("#sheet");
 function openItem(i,src){
   const it=ITEMS[i];
-  $("#sheet-in").innerHTML=`<div class="big"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}">${badge(it)}</div><div class="body"><h3 class="name" id="sheet-name">${esc(it.n[L])}</h3>${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,false)}${optsHTML(it)}${addsHTML(it)}</div>`;
+  $("#sheet-in").innerHTML=`<div class="big"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}">${badge(it)}</div><div class="body"><h3 class="name" id="sheet-name">${esc(it.n[L])}</h3>${josperHTML(it)}${it.d?`<p class="desc">${esc(it.d[L])}</p>`:""}${pricesHTML(it,false)}${optsHTML(it)}${addsHTML(it)}</div>`;
   const fly=!RM&&src&&dlg.showModal&&dlg.animate;
   dlg.classList.toggle("flip",!!fly);
   if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");
