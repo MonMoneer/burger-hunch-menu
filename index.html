@@ -382,7 +382,7 @@ const T={
   cur:["AED","درهم"],best:["Best seller","الأكثر طلبًا"],nw:["New","جديد"],cookedIn:["Cooked in","مطهو في"]
 };
 const CATS=[
- {id:"burgers",n:["Burgers","برجر"],t:["Black Angus beef and chicken, grilled over a real wood fire.","لحم بلاك أنجوس ودجاج، مشويّان على نار الحطب."]},
+ {id:"burgers",n:["Burgers","برجر"],t:["Black Angus beef and chicken, cooked over real wood and charcoal.","لحم بلاك أنجوس ودجاج، مطهوّان على نار الحطب والفحم."]},
  {id:"sandwiches",n:["Sandwiches","ساندوتشات"],t:["Fresh rolls, stacked with grilled Angus tenderloin or chicken breast.","خبز رول طازج، محشو بتندرلوين أنجوس أو صدر دجاج مشوي."]},
  {id:"appetizers",n:["Appetizers","مقبلات"],t:["Fries, bites and sides for the table, with six sauces to dip into.","بطاطس وبايتس وأطباق جانبية للطاولة، مع ست صوصات للتغميس."]},
  {id:"drinks",n:["Drinks","مشروبات"],t:["Something cold to go with the fire.","شيء بارد يرافق نار الحطب."]}
@@ -395,8 +395,8 @@ const ITEMS=[
  {c:"burgers",img:"smokey-chicken",sizes:[39,49],n:["Smokey Burger Chicken","برجر سموكي دجاج"],add:1,d:["Chicken grilled over a wood fire, finished with melted American cheese and our smoky sauce.","دجاج مشوي على نار الحطب، مع جبن أمريكي ذائب وصوص سموكي."]},
  {c:"burgers",img:"flat-beef",p:39,add:1,n:["Flat Tasty Burger Beef","فلات تيستي برجر لحم"],d:["A thin slice of Black Angus with Texas special sauce and American cheese, toasted flat over the wood fire.","شريحة بلاك أنجوس رقيقة مع صوص تكساس الخاص والجبن الأمريكي، محمّصة على نار الحطب."]},
  {c:"burgers",img:"flat-chicken",p:39,add:1,n:["Flat Tasty Burger Chicken","فلات تيستي برجر دجاج"],d:["Our Flat Tasty Burger, made with chicken.","فلات تيستي برجر، بالدجاج."]},
- {c:"sandwiches",img:"bogota",p:49,n:["Bogota","بوغوتا"],d:["Grilled Angus tenderloin with caramelised onion, white and yellow cheddar, lettuce, MOLT sauce and jalapeños, in a fresh roll.","شرائح تندرلوين أنجوس مشوية مع بصل مكرمل، وجبن شيدر أبيض وأصفر، وخس، وصوص مولت، وهالبينو، في خبز رول طازج."]},
- {c:"sandwiches",img:"sao-paulo",p:39,n:["Sao Paulo","ساو باولو"],d:["Grilled chicken breast strips in our special marinade, with lettuce, white cheddar, crispy onion, ranch, honey mustard and chipotle, in a fresh roll.","شرائح صدر دجاج مشوية بتتبيلتنا الخاصة، مع خس وجبن شيدر أبيض وبصل مقرمش وصوص رانش وعسل وخردل وشيبوتلي، في خبز رول طازج."]},
+ {c:"sandwiches",img:"bogota",p:49,n:["Bogotá","بوغوتا"],d:["Grilled Angus tenderloin with caramelised onion, white and yellow cheddar, lettuce, MOLT sauce and jalapeños, in a fresh roll.","شرائح تندرلوين أنجوس مشوية مع بصل مكرمل، وجبن شيدر أبيض وأصفر، وخس، وصوص مولت، وهالبينو، في خبز رول طازج."]},
+ {c:"sandwiches",img:"sao-paulo",p:39,n:["São Paulo","ساو باولو"],d:["Grilled chicken breast strips in our special marinade, with lettuce, white cheddar, crispy onion, ranch, honey mustard and chipotle, in a fresh roll.","شرائح صدر دجاج مشوية بتتبيلتنا الخاصة، مع خس، وجبن شيدر أبيض، وبصل مقرمش، وصوص رانش، وصوص العسل والخردل، وصوص شيبوتلي، في خبز رول طازج."]},
  {c:"appetizers",img:"fries",p:15,opts:["plain","seasoned"],n:["French Fries","بطاطس"],d:["Golden and crispy, plain or seasoned with our spices.","ذهبية ومقرمشة، سادة أو بالتوابل."]},
  {c:"appetizers",img:"cheese-fries",p:25,n:["Cheese Fries","تشيز فرايز"],d:["Fries loaded with American cheddar, Hunch sauce and sliced jalapeños.","بطاطس مغطاة بجبن شيدر أمريكي وصوص هنش وشرائح هالبينو."]},
  {c:"appetizers",img:"hunch-bites",p:25,n:["Chicken Bites","تشيكن بايتس"],d:["Five pieces of fried chicken breast, served with Hunch sauce.","خمس قطع من صدر الدجاج المقلي، تُقدَّم مع صوص هنش."]},
@@ -404,7 +404,7 @@ const ITEMS=[
  {c:"appetizers",img:"corn-salad",best:1,p:20,n:["Corn Salad","سلطة الذرة"],d:["Grilled corn, feta, fresh coriander, tomatoes, green peppers and spring onions, with lemon mayonnaise.","ذرة مشوية مع جبنة الفيتا، والكزبرة الطازجة، والطماطم، والفلفل الأخضر، والبصل الأخضر، مع صوص المايونيز بالليمون."]},
  {c:"appetizers",s:1,g:"h",sn:["Hunch","هنش"],img:"hunch-sauce",p:6,best:1,n:["Hunch Sauce","صوص هنش"]},
  {c:"appetizers",s:1,g:"h",sn:["Smokey","سموكي"],img:"smokey-sauce",p:6,n:["Smokey Sauce","صوص سموكي"]},
- {c:"appetizers",s:1,g:"h",sn:["Algerian","الجيريا"],img:"algerian-sauce",p:6,n:["Algerian Sauce","صوص الجيريا"]},
+ {c:"appetizers",s:1,g:"h",sn:["Algerian","ألجيريان"],img:"algerian-sauce",p:6,n:["Algerian Sauce","صوص ألجيريان"]},
  {c:"appetizers",s:1,g:"m",sn:["MOLT","مولت"],img:"molt-sauce",p:5,best:1,n:["MOLT Sauce","صوص مولت"]},
  {c:"appetizers",s:1,g:"m",sn:["Special","خاص"],img:"special-sauce",p:5,n:["Special Sauce","صوص خاص"]},
  {c:"appetizers",s:1,g:"m",sn:["Honey Mustard","عسل وخردل"],img:"honey-mustard",p:5,n:["Honey Mustard","صوص العسل والخردل"]},
