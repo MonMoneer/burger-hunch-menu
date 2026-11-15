@@ -150,7 +150,7 @@ main.swap{animation:swap .45s ease}
 .item.flip{grid-template-columns:minmax(0,1fr) minmax(0,clamp(180px,30vw,330px))}
 .item.flip .ph{order:2}
 .ph{position:relative;aspect-ratio:1;border-radius:16px;overflow:hidden;background:var(--stone)}
-.ph>img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .6s var(--ease)}
+.ph>img:not(.seal){width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .6s var(--ease)}
 .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,rgba(255,120,40,.5),transparent 62%);opacity:0;pointer-events:none;mix-blend-mode:screen}
 .name{margin:0;font:800 clamp(30px,3.8vw,46px)/1 var(--display);color:var(--cream)}
 [dir=rtl] .name{font:700 clamp(22px,2.9vw,32px)/1.3 var(--text)}
@@ -163,18 +163,18 @@ main.swap{animation:swap .45s ease}
 [dir=rtl] .price{font:600 clamp(19px,2.2vw,23px)/1 var(--text)}
 [dir=rtl] .price .cur{font:400 .7em/1 var(--text)}
 .hit{position:absolute;inset:0;z-index:1;border-radius:16px}
-@media (hover:hover){.item:hover .ph>img{transform:scale(1.07)}}
-.item:active .ph>img{transform:scale(.98)}
+@media (hover:hover){.item:hover .ph>img:not(.seal){transform:scale(1.07)}}
+.item:active .ph>img:not(.seal){transform:scale(.98)}
 /* dish reveal */
-.js .reveal .ph>img{opacity:0;transform:scale(1.14);filter:brightness(.35) saturate(.5)}
-.reveal.seen .ph>img{opacity:1;transform:scale(1.02);filter:none;transition:opacity .7s ease,transform 1.1s var(--ease),filter 1.2s ease}
+.js .reveal .ph>img:not(.seal){opacity:0;transform:scale(1.14);filter:brightness(.35) saturate(.5)}
+.reveal.seen .ph>img:not(.seal){opacity:1;transform:scale(1.02);filter:none;transition:opacity .7s ease,transform 1.1s var(--ease),filter 1.2s ease}
 .reveal.seen .ph::after{animation:flash 1.5s ease-out .15s}
 @keyframes flash{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
 .js .reveal .copy>*{opacity:0;transform:translateY(18px)}
 .reveal.seen .copy>*{opacity:1;transform:none;transition:opacity .6s ease,transform .8s var(--ease)}
 .reveal.seen .copy>:nth-child(2){transition-delay:.09s}
 .reveal.seen .copy>:nth-child(3){transition-delay:.18s}
-@media (hover:hover){.item.seen:hover .ph>img{transform:scale(1.07)}}
+@media (hover:hover){.item.seen:hover .ph>img:not(.seal){transform:scale(1.07)}}
 
 /* best-seller badge */
 .best{position:absolute;top:12px;inset-inline-start:12px;z-index:2;display:inline-flex;align-items:center;gap:7px;padding:7px 12px 6px 10px;border-radius:999px;background:var(--orange);color:#1b1612;font:800 15px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.45),0 0 0 3px rgba(242,106,33,.22);pointer-events:none}
@@ -197,8 +197,8 @@ main.swap{animation:swap .45s ease}
 .bdgs .best{position:static}
 .sheet .bdgs{top:16px;inset-inline-start:16px}
 .bdgs{align-items:center;gap:10px}
-.seal{display:block;width:auto;height:54px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.55))}
-.sheet .seal{height:72px}
+.seal{position:absolute;top:10px;inset-inline-end:10px;z-index:2;display:block;width:auto;height:clamp(84px,30%,124px);filter:drop-shadow(0 8px 14px rgba(0,0,0,.6));pointer-events:none}
+.sheet .seal{top:14px;inset-inline-end:14px}
 .js .reveal .seal{opacity:0;scale:.5;rotate:-12deg}
 .reveal.seen .seal{opacity:1;scale:1;rotate:0deg;transition:opacity .4s ease .8s,scale .7s cubic-bezier(.3,1.6,.5,1) .8s,rotate .7s cubic-bezier(.3,1.6,.5,1) .8s}
 .josper{display:inline-flex;align-items:center;align-self:flex-start;justify-self:start;width:fit-content;max-width:100%;gap:9px;margin-top:12px;padding:7px 14px;border-radius:999px;background:rgba(242,106,33,.12);border:1px solid rgba(242,106,33,.4);color:var(--cream);font:600 15px/1 var(--text);white-space:nowrap}
@@ -289,7 +289,7 @@ dialog.closing[open]{animation:out .22s ease forwards}
 dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
 .sheet{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
 .sheet .big{position:relative;min-height:clamp(320px,46vw,520px);background:#0f0d0b;overflow:hidden}
-.sheet .big>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sheet .big>img:not(.seal){position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .flyer{position:fixed;z-index:5;object-fit:cover;border-radius:16px;pointer-events:none}
 .sheet .body{padding:clamp(24px,3.6vw,42px);display:flex;flex-direction:column;gap:6px}
 .sheet .body>*{animation:rise2 .6s var(--ease) both}
@@ -312,6 +312,7 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
   .price:not(.solo){justify-content:space-between}
   .price .lb{margin-inline-end:auto}
   .sheet{grid-template-columns:minmax(0,1fr)}
+  .sheet .seal{top:66px}
   .sheet .big{min-height:0;aspect-ratio:4/3}
   dialog{width:100vw;max-width:100vw;max-height:94vh;margin:auto 0 0;border-radius:22px 22px 0 0}
   @keyframes pop{from{transform:translateY(60%)}}
@@ -323,7 +324,7 @@ dialog.closing[open]::backdrop{animation:fadeOut .22s ease forwards}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
   .js .splash{display:none}
-  .js .hero h1 .c,.js .beef,.js .sao,.js .reveal .ph>img,.js .reveal .copy>*,.js .op .ttl,.js .op .tag,.js .end .sign span,.js .saucebar .plank,.js .saucebar .cimg,.js .saucebar .stag,.js .reveal .best,.js .saucebar .best,.js .reveal .seal{rotate:0deg;transform:none;opacity:1;filter:none;clip-path:none;scale:1}
+  .js .hero h1 .c,.js .beef,.js .sao,.js .reveal .ph>img:not(.seal),.js .reveal .copy>*,.js .op .ttl,.js .op .tag,.js .end .sign span,.js .saucebar .plank,.js .saucebar .cimg,.js .saucebar .stag,.js .reveal .best,.js .saucebar .best,.js .reveal .seal{rotate:0deg;transform:none;opacity:1;filter:none;clip-path:none;scale:1}
   .cimg::before{opacity:1}
   .js .lattice{opacity:.75;transform:rotate(-8deg)}
   .sear i{transform:skewX(-35deg) scaleX(1);background:#7a3414}
@@ -428,8 +429,8 @@ const badge=it=>{
   const b=[];
   if(it.best)b.push(`<span class="best">${FLAME}${T.best[L]}</span>`);
   if(it.nw)b.push(`<span class="best new">${SPARK}${T.nw[L]}</span>`);
-  if(it.josper)b.push(`<img class="seal" src="assets/brand/josper-shield.webp" width="181" height="223" alt="Josper since 1969">`);
-  return b.length>1?`<span class="bdgs">${b.join("")}</span>`:b.join("");
+  const seal=it.josper?`<img class="seal" src="assets/brand/josper-shield.webp" width="181" height="223" alt="Josper since 1969">`:"";
+  return (b.length>1?`<span class="bdgs">${b.join("")}</span>`:b.join(""))+seal;
 };
 const pic=(it,lazy)=>`<div class="ph"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}"${lazy?' loading="lazy" decoding="async"':""}>${badge(it)}</div>`;
 const optsHTML=it=>it.opts?`<div class="opts">${it.opts.map(o=>`<span>${T[o][L]}</span>`).join("")}</div>`:"";
@@ -538,7 +539,7 @@ function openItem(i,src){
   dlg.classList.toggle("flip",!!fly);
   if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");
   if(!fly)return;
-  const a=src.getBoundingClientRect(),big=dlg.querySelector(".big>img"),b=big.getBoundingClientRect();
+  const a=src.getBoundingClientRect(),big=dlg.querySelector(".big>img:not(.seal)"),b=big.getBoundingClientRect();
   const f=new Image();f.src=big.src;f.className="flyer";f.alt="";
   Object.assign(f.style,{left:a.left+"px",top:a.top+"px",width:a.width+"px",height:a.height+"px"});
   dlg.appendChild(f);big.style.opacity=0;
@@ -550,7 +551,7 @@ function closeSheet(){
   dlg.classList.add("closing");
   setTimeout(()=>{dlg.classList.remove("closing");dlg.close()},210);
 }
-document.addEventListener("click",e=>{const h=e.target.closest("[data-open]");if(!h)return;const i=+h.dataset.open,card=h.closest("article");openItem(i,card?card.querySelector(".ph>img"):document.querySelector(`[data-cup="${i}"] img`))});
+document.addEventListener("click",e=>{const h=e.target.closest("[data-open]");if(!h)return;const i=+h.dataset.open,card=h.closest("article");openItem(i,card?card.querySelector(".ph>img:not(.seal)"):document.querySelector(`[data-cup="${i}"] img`))});
 $("#close").addEventListener("click",closeSheet);
 dlg.addEventListener("click",e=>{if(e.target===dlg)closeSheet()});
 dlg.addEventListener("cancel",e=>{e.preventDefault();closeSheet()});
