@@ -197,7 +197,7 @@ main.swap{animation:swap .45s ease}
 .bdgs .best{position:static}
 .sheet .bdgs{top:16px;inset-inline-start:16px}
 .best.jos{background:rgba(22,17,13,.78);color:var(--cream);border:1px solid rgba(244,232,216,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 8px 18px rgba(0,0,0,.45)}
-.best.jos{gap:8px;padding-inline:12px}
+.best.jos{padding:6px 13px}
 .best.jos img{display:block;height:14px;width:auto;translate:0 1px}
 .sheet .best.jos img{height:16px}
 .reveal.seen .bdgs .best:nth-child(2){transition-delay:.75s}
@@ -375,7 +375,7 @@ const T={
   aed:["All prices are in UAE dirhams (AED).","جميع الأسعار بالدرهم الإماراتي."],
   addons:["Add-ons","إضافات"],each:["each","للواحد"],plain:["Plain","سادة"],seasoned:["Seasoned","بالتوابل"],
   view:["View","عرض"],close:["Close","إغلاق"],sauces:["Sauces","الصوصات"],sbTag:["Add your own touch to your sandwich.","أضف لمستك الخاصة على ساندوتشك."],langBtn:["Switch to Arabic","التبديل إلى الإنجليزية"],
-  cur:["AED","درهم"],best:["Best seller","الأكثر طلبًا"],nw:["New","جديد"],cookedIn:["Cooked in","مطهو في"]
+  cur:["AED","درهم"],best:["Best seller","الأكثر طلبًا"],nw:["New","جديد"]
 };
 const CATS=[
  {id:"burgers",n:["Burgers","برجر"],t:["Black Angus beef and chicken, grilled over a real wood fire.","لحم بلاك أنجوس ودجاج، مشويّان على نار الحطب."]},
@@ -424,7 +424,7 @@ const badge=it=>{
   const b=[];
   if(it.best)b.push(`<span class="best">${FLAME}${T.best[L]}</span>`);
   if(it.nw)b.push(`<span class="best new">${SPARK}${T.nw[L]}</span>`);
-  if(it.josper)b.push(`<span class="best jos"><span>${T.cookedIn[L]}</span><img src="assets/brand/josper-white.png" width="500" height="84" alt="Josper"></span>`);
+  if(it.josper)b.push(`<span class="best jos"><img src="assets/brand/josper-white.png" width="500" height="84" alt="Josper"></span>`);
   return b.length>1?`<span class="bdgs">${b.join("")}</span>`:b.join("");
 };
 const pic=(it,lazy)=>`<div class="ph"><img src="assets/photos/${it.img}.webp" width="840" height="840" alt="${esc(it.n[L])}"${lazy?' loading="lazy" decoding="async"':""}>${badge(it)}</div>`;
