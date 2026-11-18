@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/burgerhu/public_html/menu/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R index.html assets $DEPLOYPATH
