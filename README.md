@@ -1,5 +1,13 @@
 # Burger Hunch × MOLT table menu (15 Nov 2026)
 
+## Live
+
+- Main: https://burgerhunchxmolt.ae/menu/ (tablet mode: add `#tablet`)
+- Backup: https://monmoneer.github.io/burger-hunch-menu/
+
+Pushes to `main` reach burgerhunchxmolt.ae automatically: a cron job on the tasjeel cPanel account pulls this repo every 5 minutes and, when there is a new commit, deploys `index.html` and `assets/` to `public_html/menu/` via `.cpanel.yml`.
+
+
 Browsing-only menu for guests at the table, on a tablet or by QR. The waiter takes the order. It has no cart, no order buttons and no "Explore menu" button.
 
 - Open `index.html` from a web host. Keep the `assets` folder next to it.
